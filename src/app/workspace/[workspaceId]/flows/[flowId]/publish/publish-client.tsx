@@ -66,8 +66,12 @@ export function PublishClient({
       setSuccess(true);
       router.refresh();
     } else {
-      const data = await res.json();
-      setError(data.error || "Failed to publish");
+      try {
+        const data = await res.json();
+        setError(data.error || "Failed to publish");
+      } catch {
+        setError(`Server error (${res.status}). Make sure you've run: npx prisma db push`);
+      }
     }
   }
 
