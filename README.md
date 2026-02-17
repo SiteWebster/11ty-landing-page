@@ -1,54 +1,138 @@
-# 11ty-landing-page
+# QuoteFlow
 
-A simple landing page built with 11ty and Tailwind CSS.
+Agency-first multi-tenant SaaS quoting platform built with Next.js, Prisma, and NextAuth.
 
-> Port of the [Hugo Version](https://github.com/ttntm/hugo-landing-page)
+## Tech Stack
 
-## How to use this template
+- **Next.js 16** (App Router, TypeScript)
+- **Tailwind CSS 4**
+- **Prisma 7** (PostgreSQL with `@prisma/adapter-pg`)
+- **NextAuth v5** (Credentials provider, JWT sessions)
 
-**Requirements:**
+## Project Structure
 
-1. Eleventy (developed and tested with version 0.12.1)
-2. Tailwind CSS (@2.0.4 - see [#2](https://github.com/ttntm/11ty-landing-page/issues/2))
+```
+src/
+  app/
+    api/auth/[...nextauth]/   # NextAuth route handler
+    login/                     # Login page
+    agency/                    # Agency dashboard (protected)
+    workspace/[workspaceId]/   # Workspace dashboard (protected)
+    layout.tsx                 # Root layout with nav + session provider
+    page.tsx                   # Landing page
+  components/
+    nav.tsx                    # Navigation bar
+    session-provider.tsx       # NextAuth session provider wrapper
+  lib/
+    auth.ts                   # NextAuth config with Credentials provider
+    auth.config.ts            # Edge-compatible auth config (for middleware)
+    auth.types.ts             # NextAuth type augmentations
+    prisma.ts                 # Prisma client singleton
+  generated/prisma/           # Generated Prisma client (gitignored)
+  middleware.ts               # Auth middleware for protected routes
+prisma/
+  schema.prisma               # Database schema
+  seed.ts                     # Seed script
+```
 
-All other dependencies are either linked from a CDN or included in this repository.
+## Prisma Models
 
-**Setup:**
+- **User** — id, email, name, role, passwordHash, createdAt
+- **Agency** — id, name, createdAt
+- **Workspace** — id, agencyId, name, slug, createdAt
+- **WorkspaceUser** — id, workspaceId, userId, role
+- **QuoteFlow** — id, workspaceId, name, status, createdAt
+- **QuoteFlowVersion** — id, quoteFlowId, versionNumber, configJson, createdAt
 
-1. Fork, clone or download
-2. `cd` into the root folder
-3. run `npm install`
-4. run `npm run serve`
-5. open a browser and go to `http://localhost:8080`
+## Roles
 
-**Basic configuration:**
+`agency_owner` | `agency_staff` | `client_admin` | `client_staff` | `read_only`
 
-1. Eleventy -> `./.eleventy.js`
-2. Tailwind -> `./tailwind.config.js`
-3. Netlify -> `./netlify.toml`
+## Getting Started
 
-CSS is built via PostCSS and based on `./src/_includes/css/_page.css`. Building CSS gets triggered by `./src/css/page.11ty.js`.
+### Prerequisites
 
-Please note that this CSS build _does not_ include the `normalize.css` file used for the 2 regular pages (imprint, privacy) - a minified production version is stored in `./src/static/css` and gets included in the build by default.
+- Node.js 18+
+- PostgreSQL running locally (or a remote instance)
 
-**Change Content:**
+### 1. Install dependencies
 
-Page content is stored in
+```bash
+npm install
+```
 
-- `./src/`
-  - `imprint.md`
-  - `privacy.md`
-- `./src/sections/`
-- `./src/_data/features.json`
+### 2. Configure environment
 
-**Change Templates/Layout:**
+Copy the example env file and update `DATABASE_URL` to point to your Postgres instance:
 
-Page structure and templates are stored in `./src/_layouts/` and can be edited there.
+```bash
+cp .env.example .env
+```
 
-Best have a look at `./layouts/base.njk` first to understand how it all comes together - the page itself is constructed from partial templates stored in `./src/includes/` and each section has a corresponding template file (`section.**.njk`) stored there.
+Edit `.env`:
 
-`index.njk` in `./src/` arranges everything, meaning that sections can be added/re-ordered/removed/... there.
+```
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/quoteflow?schema=public"
+AUTH_SECRET="generate-a-random-secret-here"
+```
 
-**Change images:**
+Generate a proper secret:
 
-Images are stored in `./static/img/`; everything in there can be considered a placeholder that should eventually be replaced with your actual production images.
+```bash
+npx auth secret
+```
+
+### 3. Set up the database
+
+```bash
+# Generate Prisma client
+npm run db:generate
+
+# Push schema to database (creates tables)
+npm run db:push
+
+# Or use migrations for production
+npm run db:migrate
+```
+
+### 4. Seed the database
+
+```bash
+npm run db:seed
+```
+
+This creates:
+- **Agency**: Acme Insurance Agency
+- **User**: owner@acme.com / password123 (agency_owner)
+- **Workspace**: Acme Main Workspace (slug: acme-main)
+- **QuoteFlow**: Home Insurance Quote (draft)
+- **QuoteFlowVersion**: v1 with sample config
+
+### 5. Run the dev server
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000 and sign in with `owner@acme.com` / `password123`.
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run db:generate` | Generate Prisma client |
+| `npm run db:migrate` | Run Prisma migrations |
+| `npm run db:push` | Push schema to DB (no migration) |
+| `npm run db:seed` | Run seed script |
+| `npm run db:studio` | Open Prisma Studio |
+| `npm run db:reset` | Reset database and re-seed |
+
+## Protected Routes
+
+The middleware (`src/middleware.ts`) redirects unauthenticated users to `/login` when accessing:
+- `/agency/*`
+- `/workspace/*`

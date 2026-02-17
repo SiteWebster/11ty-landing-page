@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  agency_owner
+  agency_staff
+  client_admin
+  client_staff
+  read_only
+}
+
+enum QuoteFlowStatus {
+  draft
+  active
+  archived
+}
+
+model User {
+  id           String          @id @default(cuid())
+  email        String          @unique
+  name         String
+  role         Role            @default(agency_staff)
+  passwordHash String
+  createdAt    DateTime        @default(now())
+  workspaces   WorkspaceUser[]
+}
+
+model Agency {
+  id         String      @id @default(cuid())
+  name       String
+  createdAt  DateTime    @default(now())
+  workspaces Workspace[]
+}
+
+model Workspace {
+  id         String          @id @default(cuid())
+  agencyId   String
+  agency     Agency          @relation(fields: [agencyId], references: [id])
+  name       String
+  slug       String          @unique
+  createdAt  DateTime        @default(now())
+  users      WorkspaceUser[]
+  quoteFlows QuoteFlow[]
+}
+
+model WorkspaceUser {
+  id          String    @id @default(cuid())
+  workspaceId String
+  workspace   Workspace @relation(fields: [workspaceId], references: [id])
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  role        Role      @default(client_staff)
+
+  @@unique([workspaceId, userId])
+}
+
+model QuoteFlow {
+  id          String            @id @default(cuid())
+  workspaceId String
+  workspace   Workspace         @relation(fields: [workspaceId], references: [id])
+  name        String
+  status      QuoteFlowStatus   @default(draft)
+  createdAt   DateTime          @default(now())
+  versions    QuoteFlowVersion[]
+}
+
+model QuoteFlowVersion {
+  id            String    @id @default(cuid())
+  quoteFlowId   String
+  quoteFlow     QuoteFlow @relation(fields: [quoteFlowId], references: [id])
+  versionNumber Int
+  configJson    Json
+  createdAt     DateTime  @default(now())
+}
