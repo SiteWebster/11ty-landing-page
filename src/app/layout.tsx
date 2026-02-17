@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "@/components/nav";
-import SessionProvider from "@/components/session-provider";
 
 export const metadata: Metadata = {
   title: "QuoteFlow",
@@ -15,12 +13,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
-        <SessionProvider>
-          <Nav />
-          <main>{children}</main>
-        </SessionProvider>
-      </body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
