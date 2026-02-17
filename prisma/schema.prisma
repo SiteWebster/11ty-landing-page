@@ -69,6 +69,8 @@ model QuoteFlow {
   publishedVersionId String?
   createdAt          DateTime          @default(now())
   versions           QuoteFlowVersion[]
+  sessions           QuoteSession[]
+  submissions        Submission[]
 }
 
 model QuoteFlowVersion {
@@ -78,4 +80,26 @@ model QuoteFlowVersion {
   versionNumber Int
   configJson    Json
   createdAt     DateTime  @default(now())
+}
+
+model QuoteSession {
+  id          String   @id @default(cuid())
+  flowId      String
+  flow        QuoteFlow @relation(fields: [flowId], references: [id])
+  versionId   String
+  answersJson Json     @default("{}")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Submission {
+  id           String   @id @default(cuid())
+  flowId       String
+  flow         QuoteFlow @relation(fields: [flowId], references: [id])
+  versionId    String
+  contactJson  Json
+  answersJson  Json
+  resultJson   Json
+  needsReview  Boolean  @default(false)
+  createdAt    DateTime @default(now())
 }
