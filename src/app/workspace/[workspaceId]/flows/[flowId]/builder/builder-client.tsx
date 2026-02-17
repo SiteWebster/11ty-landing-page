@@ -270,7 +270,7 @@ export function BuilderClient({
 
         {config.steps.map((step, idx) => (
           <div
-            key={step.id}
+            key={step.id || `step_${idx}`}
             className="rounded-lg border bg-white shadow-sm"
           >
             {/* Step header */}
