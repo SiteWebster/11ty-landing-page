@@ -61,13 +61,14 @@ model WorkspaceUser {
 }
 
 model QuoteFlow {
-  id          String            @id @default(cuid())
-  workspaceId String
-  workspace   Workspace         @relation(fields: [workspaceId], references: [id])
-  name        String
-  status      QuoteFlowStatus   @default(draft)
-  createdAt   DateTime          @default(now())
-  versions    QuoteFlowVersion[]
+  id                 String            @id @default(cuid())
+  workspaceId        String
+  workspace          Workspace         @relation(fields: [workspaceId], references: [id])
+  name               String
+  status             QuoteFlowStatus   @default(draft)
+  publishedVersionId String?
+  createdAt          DateTime          @default(now())
+  versions           QuoteFlowVersion[]
 }
 
 model QuoteFlowVersion {
