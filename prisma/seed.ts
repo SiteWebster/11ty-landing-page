@@ -83,7 +83,102 @@ async function main() {
   // Create initial version
   await prisma.quoteFlowVersion.upsert({
     where: { id: "seed-version-1" },
-    update: {},
+    update: {
+      configJson: {
+        slug: "home-insurance-quote",
+        displayMode: "range_only",
+        steps: [
+          {
+            id: "step_property",
+            title: "Property Information",
+            type: "questions",
+            questions: [
+              {
+                id: "q_address",
+                label: "Property Address",
+                helpText: "Enter the full street address",
+                type: "text",
+                required: true,
+                options: [],
+                pricingImpact: { kind: "none", value: 0 },
+              },
+              {
+                id: "q_sqft",
+                label: "Square Footage",
+                helpText: "Total living area in sq ft",
+                type: "number",
+                required: true,
+                options: [],
+                pricingImpact: { kind: "unit_rate", value: 0.5 },
+              },
+              {
+                id: "q_year",
+                label: "Year Built",
+                helpText: "",
+                type: "number",
+                required: true,
+                options: [],
+                pricingImpact: { kind: "none", value: 0 },
+              },
+            ],
+          },
+          {
+            id: "step_coverage",
+            title: "Coverage Options",
+            type: "questions",
+            questions: [
+              {
+                id: "q_dwelling",
+                label: "Dwelling Coverage",
+                helpText: "Amount of coverage for your home structure",
+                type: "single_select",
+                required: true,
+                options: [
+                  { label: "$250,000", value: "250000" },
+                  { label: "$500,000", value: "500000" },
+                  { label: "$750,000", value: "750000" },
+                ],
+                pricingImpact: { kind: "sets_base", value: 0 },
+              },
+              {
+                id: "q_deductible",
+                label: "Deductible",
+                helpText: "Higher deductible = lower premium",
+                type: "single_select",
+                required: true,
+                options: [
+                  { label: "$500", value: "500" },
+                  { label: "$1,000", value: "1000" },
+                  { label: "$2,500", value: "2500" },
+                ],
+                pricingImpact: { kind: "multiply", value: 1 },
+              },
+            ],
+          },
+          {
+            id: "step_contact",
+            title: "Contact Information",
+            type: "contact_gate",
+            questions: [],
+          },
+          {
+            id: "step_results",
+            title: "Your Quote",
+            type: "results",
+            questions: [],
+          },
+        ],
+        pricingConfig: {
+          model: "base_multipliers_addons",
+          basePrice: 1200,
+          roundingIncrement: 25,
+          rangeLowPercent: 0.92,
+          rangeHighPercent: 1.12,
+          minCap: null,
+          maxCap: null,
+        },
+      },
+    },
     create: {
       id: "seed-version-1",
       quoteFlowId: quoteFlow.id,
