@@ -1,10 +1,301 @@
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   scroll-behavior: smooth;
+  box-sizing: border-box;
 }
 
 html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  background: url('/img/bg.svg');
+  background: #111111;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Heading font */
+.font-heading,
+h1, h2, h3, h4 {
+  font-family: 'Oswald', Impact, 'Arial Narrow', sans-serif;
+}
+
+/* ─── Section Title Decorator ─────────────────────────── */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-family: 'Oswald', Impact, 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  flex: 0 0 auto;
+  width: 2rem;
+  height: 2px;
+  background: #E8600A;
+  position: relative;
+}
+
+.section-title::before {
+  clip-path: polygon(0 50%, 100% 0, 80% 50%, 100% 100%);
+}
+
+.section-title::after {
+  clip-path: polygon(100% 50%, 0 0, 20% 50%, 0 100%);
+}
+
+.section-arrow-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: 'Oswald', Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── Hero Section ────────────────────────────────────── */
+.hero-section {
+  background-color: #111111;
+  background-image:
+    radial-gradient(ellipse at 70% 50%, rgba(232, 96, 10, 0.08) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 55%;
+  background: radial-gradient(ellipse at right center, rgba(232, 96, 10, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Orange brush stroke accent */
+.brush-stroke {
+  position: relative;
+  display: inline-block;
+}
+
+.brush-stroke::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  top: 60%;
+  background: #E8600A;
+  opacity: 0.35;
+  z-index: -1;
+  transform: skewX(-3deg);
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn-orange {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #E8600A;
+  color: white;
+  font-family: 'Oswald', Impact, sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.875rem 1.75rem;
+  text-decoration: none;
+  transition: background 0.2s;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 100%, 10px 100%);
+}
+
+.btn-orange:hover {
+  background: #c44f08;
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: white;
+  font-family: 'Oswald', Impact, sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  border: 2px solid white;
+  transition: all 0.2s;
+}
+
+.btn-outline-white:hover {
+  background: white;
+  color: #111;
+}
+
+/* ─── Service Cards ───────────────────────────────────── */
+.service-card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  transition: border-color 0.2s, transform 0.2s;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  border-color: #E8600A;
+  transform: translateY(-4px);
+}
+
+.service-card .service-img {
+  height: 180px;
+  background: #2a2a2a;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-icon-badge {
+  width: 52px;
+  height: 52px;
+  background: #E8600A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* ─── Gallery Grid ────────────────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 4px;
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 180px);
+  }
+}
+
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(232, 96, 10, 0);
+  transition: background 0.3s;
+}
+
+.gallery-item:hover::after {
+  background: rgba(232, 96, 10, 0.25);
+}
+
+/* ─── Dark section bg variants ───────────────────────── */
+.bg-dark {
+  background-color: #111111;
+}
+
+.bg-dark-2 {
+  background-color: #1a1a1a;
+}
+
+/* ─── Orange rule divider ─────────────────────────────── */
+.orange-rule {
+  width: 60px;
+  height: 3px;
+  background: #E8600A;
+  display: block;
+}
+
+/* ─── Star rating ─────────────────────────────────────── */
+.stars {
+  color: #E8600A;
+  letter-spacing: 2px;
+}
+
+/* ─── Why choose us icon boxes ───────────────────────── */
+.why-icon {
+  width: 72px;
+  height: 72px;
+  border: 3px solid #E8600A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  background: white;
+}
+
+/* ─── Realtor section ─────────────────────────────────── */
+.realtor-section {
+  background-color: #111111;
+  background-image: linear-gradient(135deg, #111111 60%, #1e1e1e 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Trust bar ───────────────────────────────────────── */
+.trust-bar {
+  border-top: 4px solid #E8600A;
+  border-bottom: 4px solid #E8600A;
+}
+
+/* ─── Testimonial cards ───────────────────────────────── */
+.testimonial-card {
+  border-top: 4px solid #E8600A;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* ─── CTA Final Section ───────────────────────────────── */
+.cta-final {
+  background: #111111;
+  position: relative;
+}
+
+.cta-final::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(to right, #E8600A, #ff8c3c, #E8600A);
+}
+
+/* ─── Placeholder image fill colors ──────────────────── */
+.img-placeholder-1 { background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%); }
+.img-placeholder-2 { background: linear-gradient(135deg, #3a2a1a 0%, #2a1a0a 100%); }
+.img-placeholder-3 { background: linear-gradient(135deg, #1a2a3a 0%, #0a1a2a 100%); }
+.img-placeholder-4 { background: linear-gradient(135deg, #2a1a2a 0%, #1a0a1a 100%); }
+
+/* Image-like placeholders with subtle patterns for gallery */
+.gallery-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-section .hero-headline {
+    font-size: 2.5rem;
+  }
 }

@@ -26,6 +26,12 @@ module.exports = {
       indigo: colors.indigo,
       purple: colors.violet,
       pink: colors.pink,
+      orange: colors.orange,
+    },
+    extend: {
+      fontFamily: {
+        heading: ['Oswald', 'Impact', 'Arial Narrow', 'sans-serif'],
+      },
     },
     spacing: {
       px: '1px',

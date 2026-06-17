@@ -1,17 +1,11 @@
 {
-  "baseURL": "https://hello.world",
-  "author": "hello.world",
-  "description": "hello.world - Venture Capital",
-  "title": "hello.world - Venture Capital",
+  "baseURL": "https://betterthanyourhusband.com",
+  "author": "Better Than Your Husband Handyman",
+  "title": "Better Than Your Husband – Handyman Services",
+  "description": "Reliable handyman help that actually shows up. TV mounting, carpentry, drywall repair, plumbing fixes & more.",
   "language": "en",
-  "social": [
-    {
-      "title": "Twitter",
-      "url": "https://twitter.com/#"
-    },
-    {
-      "title": "LinkedIn",
-      "url": "https://linkedin.com/company/#"
-    }
-  ]
+  "phone": "(866) 123-4567",
+  "email": "info@btyh-handyman.com",
+  "address": "1234 Toolbox Way, Yourtown, ST 12345",
+  "hours": "Mon – Sat: 8AM – 6PM"
 }

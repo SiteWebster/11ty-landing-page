@@ -2,7 +2,806 @@
 layout: base.njk
 isFront: true
 ---
-<header class="header w-full flex flex-col">
-  {% include "navbar.njk" %}
-  {% include "section.header.njk" %}
-</header>
+
+{% include "navbar.njk" %}
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO SECTION
+══════════════════════════════════════════════════════════ -->
+<section class="hero-section" style="min-height: 560px;">
+  <div class="max-w-7xl mx-auto px-4 py-16 flex flex-col lg:flex-row items-center gap-10">
+
+    <!-- Left: Text -->
+    <div class="flex-1 z-10">
+      <h1 class="font-heading font-black text-white uppercase leading-tight mb-4" style="font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.05;">
+        Handyman Help That<br>
+        <span class="text-orange-500">Actually</span><br>
+        Shows Up
+      </h1>
+      <p class="text-gray-300 text-base leading-relaxed mb-8 max-w-lg">
+        Reliable. Skilled. No excuses. From quick fixes to full-on projects, we tackle the jobs other guys avoid—so you don't have to.
+      </p>
+      <a href="#contact" class="btn-orange text-white no-underline">
+        Book A Repair
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Right: Hero Illustration -->
+    <div class="flex-1 flex justify-center items-end relative" style="min-height: 360px;">
+      <!-- Decorative orange splash -->
+      <div style="position:absolute; top:0; right:0; width:320px; height:320px; background: radial-gradient(circle, rgba(232,96,10,0.18) 0%, transparent 70%); border-radius:50%;"></div>
+      <!-- Handyman figure placeholder -->
+      <div style="position:relative; z-index:2; text-align:center;">
+        <svg viewBox="0 0 280 380" width="280" height="380" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shadow -->
+          <ellipse cx="140" cy="370" rx="90" ry="12" fill="rgba(0,0,0,0.4)"/>
+          <!-- Body -->
+          <rect x="90" y="180" width="100" height="140" rx="8" fill="#1a1a1a"/>
+          <!-- Head -->
+          <circle cx="140" cy="155" r="38" fill="#c8956c"/>
+          <!-- Cap -->
+          <path d="M102 148 Q140 108 178 148 L178 148 Q178 130 140 124 Q102 130 102 148Z" fill="#111111"/>
+          <rect x="95" y="146" width="90" height="8" rx="4" fill="#111111"/>
+          <!-- Face features -->
+          <circle cx="128" cy="152" r="4" fill="#2a1a0a"/>
+          <circle cx="152" cy="152" r="4" fill="#2a1a0a"/>
+          <path d="M128 168 Q140 176 152 168" stroke="#2a1a0a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Beard -->
+          <path d="M110 162 Q140 182 170 162 Q165 178 140 180 Q115 178 110 162Z" fill="#8a6a4a"/>
+          <!-- Arms -->
+          <rect x="50" y="185" width="42" height="22" rx="11" fill="#1a1a1a" transform="rotate(15 50 185)"/>
+          <rect x="188" y="185" width="42" height="22" rx="11" fill="#1a1a1a" transform="rotate(-15 230 185)"/>
+          <!-- Hands -->
+          <circle cx="52" cy="210" r="14" fill="#c8956c"/>
+          <circle cx="228" cy="210" r="14" fill="#c8956c"/>
+          <!-- Drill in right hand -->
+          <rect x="218" y="200" width="36" height="14" rx="4" fill="#E8600A"/>
+          <rect x="248" y="207" width="20" height="6" rx="2" fill="#666"/>
+          <rect x="232" y="213" width="8" height="20" rx="2" fill="#E8600A"/>
+          <!-- Tool belt -->
+          <rect x="88" y="278" width="104" height="18" rx="4" fill="#5a3a1a"/>
+          <rect x="108" y="280" width="18" height="14" rx="2" fill="#E8600A"/>
+          <rect x="134" y="280" width="18" height="14" rx="2" fill="#E8600A"/>
+          <rect x="160" y="280" width="18" height="14" rx="2" fill="#E8600A"/>
+          <!-- Legs -->
+          <rect x="102" y="315" width="34" height="55" rx="6" fill="#1a1a1a"/>
+          <rect x="144" y="315" width="34" height="55" rx="6" fill="#1a1a1a"/>
+          <!-- Boots -->
+          <rect x="98" y="358" width="44" height="18" rx="4" fill="#222"/>
+          <rect x="140" y="358" width="44" height="18" rx="4" fill="#222"/>
+          <!-- Shirt logo -->
+          <text x="140" y="245" text-anchor="middle" fill="#E8600A" font-size="9" font-weight="bold" font-family="Arial">BTYH</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom orange accent bar -->
+  <div style="height:4px; background: linear-gradient(to right, transparent, #E8600A 30%, #E8600A 70%, transparent);"></div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TRUST BAR
+══════════════════════════════════════════════════════════ -->
+<section class="trust-bar bg-white py-8">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="flex items-center gap-4">
+        <div class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-orange-500 flex items-center justify-center">
+          <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm">Trusted &amp; Reliable</div>
+          <div class="text-gray-500 text-xs mt-1">On time. Every time.</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 md:justify-center">
+        <div class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-orange-500 flex items-center justify-center">
+          <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm">Skilled Professionals</div>
+          <div class="text-gray-500 text-xs mt-1">Quality work that lasts.</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 md:justify-end">
+        <div class="flex-shrink-0 w-14 h-14 rounded-full border-2 border-orange-500 flex items-center justify-center">
+          <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm">Satisfaction Guaranteed</div>
+          <div class="text-gray-500 text-xs mt-1">We're not done until you're happy.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT SECTION
+══════════════════════════════════════════════════════════ -->
+<section class="bg-white py-20" id="about">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+
+      <!-- Text -->
+      <div class="flex-1">
+        <h2 class="font-heading font-black text-gray-900 uppercase leading-tight mb-4" style="font-size: clamp(2rem, 4vw, 3rem);">
+          Better Than Your<br>Average <span class="text-orange-500">Handyman</span>
+        </h2>
+        <span class="orange-rule mb-6 block"></span>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          We're the go-to crew for homeowners who are done waiting, done worrying, and done patching things themselves.
+        </p>
+        <p class="text-gray-600 leading-relaxed mb-8">
+          Big or small, simple or complicated—if it needs fixing, building, mounting, or maintaining, we've got the tools and the attitude to get it done right.
+        </p>
+        <a href="#contact" class="btn-outline-white" style="color:#111; border-color:#111;">
+          Learn More About Us
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Image -->
+      <div class="flex-1 relative" style="min-height: 320px;">
+        <div class="w-full h-72 lg:h-96 overflow-hidden" style="border: 4px solid #111; position:relative;">
+          <!-- Tool wall image placeholder -->
+          <div style="width:100%; height:100%; background: linear-gradient(135deg, #3a2a1a 0%, #2a1a0a 60%, #1a0a00 100%); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;">
+            <!-- Tool rack illustration -->
+            <svg viewBox="0 0 400 300" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;">
+              <!-- Wood background -->
+              <rect width="400" height="300" fill="#3a2010"/>
+              <line x1="0" y1="50" x2="400" y2="50" stroke="#2a1508" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="0" y1="100" x2="400" y2="100" stroke="#2a1508" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="0" y1="150" x2="400" y2="150" stroke="#2a1508" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="0" y1="200" x2="400" y2="200" stroke="#2a1508" stroke-width="1" stroke-dasharray="3,2"/>
+              <line x1="0" y1="250" x2="400" y2="250" stroke="#2a1508" stroke-width="1" stroke-dasharray="3,2"/>
+              <!-- Hammer -->
+              <rect x="60" y="60" width="12" height="70" rx="4" fill="#8B6A3E"/>
+              <rect x="44" y="55" width="44" height="22" rx="4" fill="#888"/>
+              <!-- Screwdriver -->
+              <rect x="130" y="50" width="8" height="80" rx="3" fill="#E8600A"/>
+              <rect x="127" y="127" width="14" height="20" rx="2" fill="#888"/>
+              <rect x="131" y="147" width="6" height="30" rx="1" fill="#ccc"/>
+              <!-- Wrench -->
+              <path d="M190 55 Q200 65 195 80 L192 140 Q190 145 188 140 L185 80 Q180 65 190 55Z" fill="#666"/>
+              <circle cx="190" cy="60" r="12" fill="none" stroke="#666" stroke-width="8"/>
+              <!-- Tape measure -->
+              <rect x="240" y="70" width="50" height="40" rx="8" fill="#E8600A"/>
+              <circle cx="265" cy="90" r="10" fill="#ffcc00" stroke="#E8600A" stroke-width="2"/>
+              <!-- Level -->
+              <rect x="40" y="180" width="160" height="24" rx="4" fill="#f5c842"/>
+              <circle cx="120" cy="192" r="8" fill="none" stroke="#888" stroke-width="2"/>
+              <circle cx="120" cy="192" r="3" fill="#888"/>
+              <!-- Drill -->
+              <rect x="260" y="170" width="80" height="30" rx="8" fill="#E8600A"/>
+              <rect x="278" y="198" width="20" height="30" rx="4" fill="#E8600A"/>
+              <rect x="334" y="177" width="30" height="10" rx="4" fill="#666"/>
+              <rect x="362" y="180" width="20" height="4" rx="1" fill="#888"/>
+            </svg>
+          </div>
+          <!-- Orange corner accent -->
+          <div style="position:absolute; top:0; right:0; width:0; height:0; border-style:solid; border-width:0 40px 40px 0; border-color:transparent #E8600A transparent transparent;"></div>
+        </div>
+        <!-- Decorative offset border -->
+        <div style="position:absolute; bottom:-12px; right:-12px; width:100%; height:100%; border:3px solid #E8600A; z-index:-1;"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SERVICES SECTION
+══════════════════════════════════════════════════════════ -->
+<section class="bg-dark py-20" id="services">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="text-center mb-12">
+      <div class="section-arrow-title text-white text-3xl mb-3">
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="0,8 10,0 10,6 32,6 32,10 10,10 10,16" fill="#E8600A"/></svg>
+        <span class="font-heading font-black text-white uppercase" style="font-size:2rem; letter-spacing:.12em;">Our Services</span>
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="32,8 22,0 22,6 0,6 0,10 22,10 22,16" fill="#E8600A"/></svg>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+
+      <!-- TV Mounting -->
+      <div class="service-card text-center pb-6">
+        <div class="service-img img-placeholder-2 flex items-center justify-center">
+          <svg viewBox="0 0 120 90" width="120" height="90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="100" height="60" rx="4" fill="#222" stroke="#444" stroke-width="2"/>
+            <rect x="16" y="16" width="88" height="48" rx="2" fill="#1a3a5a"/>
+            <rect x="50" y="70" width="20" height="8" fill="#333"/>
+            <rect x="35" y="76" width="50" height="4" rx="2" fill="#333"/>
+            <!-- Screen content -->
+            <rect x="20" y="20" width="80" height="40" rx="1" fill="#0a2040"/>
+            <circle cx="60" cy="40" r="12" fill="#E8600A" opacity="0.8"/>
+            <polygon points="57,34 57,46 68,40" fill="white"/>
+          </svg>
+        </div>
+        <div style="position:relative; height:26px;">
+          <div class="service-icon-badge">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 px-4">
+          <h3 class="font-heading font-bold text-white uppercase tracking-wide text-base mb-2">TV Mounting</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Secure, level, and clean installations for any size TV.</p>
+          <a href="#contact" class="text-orange-500 text-xs font-bold uppercase tracking-wider no-underline hover:text-orange-400">
+            Learn More ›
+          </a>
+        </div>
+      </div>
+
+      <!-- Carpentry -->
+      <div class="service-card text-center pb-6">
+        <div class="service-img img-placeholder-3 flex items-center justify-center">
+          <svg viewBox="0 0 120 90" width="120" height="90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Door frame -->
+            <rect x="25" y="15" width="70" height="70" rx="2" fill="#5a3a1a"/>
+            <rect x="28" y="18" width="64" height="64" rx="1" fill="#3a2010"/>
+            <rect x="32" y="22" width="26" height="56" fill="#6a4a22"/>
+            <rect x="62" y="22" width="26" height="56" fill="#6a4a22"/>
+            <circle cx="62" cy="52" r="3" fill="#E8600A"/>
+            <!-- Wood grain lines -->
+            <line x1="35" y1="30" x2="55" y2="30" stroke="#5a3a1a" stroke-width="1"/>
+            <line x1="35" y1="40" x2="55" y2="40" stroke="#5a3a1a" stroke-width="1"/>
+            <line x1="35" y1="50" x2="55" y2="50" stroke="#5a3a1a" stroke-width="1"/>
+          </svg>
+        </div>
+        <div style="position:relative; height:26px;">
+          <div class="service-icon-badge">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 px-4">
+          <h3 class="font-heading font-bold text-white uppercase tracking-wide text-base mb-2">Carpentry</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Trim, doors, shelves, and custom woodwork built to last.</p>
+          <a href="#contact" class="text-orange-500 text-xs font-bold uppercase tracking-wider no-underline hover:text-orange-400">
+            Learn More ›
+          </a>
+        </div>
+      </div>
+
+      <!-- Drywall Repair -->
+      <div class="service-card text-center pb-6">
+        <div class="service-img img-placeholder-1 flex items-center justify-center">
+          <svg viewBox="0 0 120 90" width="120" height="90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Wall with patch -->
+            <rect x="10" y="10" width="100" height="70" fill="#e8e0d0"/>
+            <!-- Hole/crack -->
+            <path d="M50 35 L60 28 L65 40 L75 33 L70 50 L60 45 L55 58 L45 50 L48 40 Z" fill="#bbb" stroke="#999" stroke-width="1"/>
+            <!-- Patch/spackle -->
+            <ellipse cx="60" cy="42" rx="22" ry="18" fill="#f0ece0" stroke="#ddd" stroke-width="1"/>
+            <!-- Putty knife -->
+            <rect x="80" y="55" width="8" height="30" rx="2" fill="#888" transform="rotate(-30 80 55)"/>
+            <rect x="70" y="62" width="18" height="8" rx="2" fill="#E8600A" transform="rotate(-30 80 55)"/>
+          </svg>
+        </div>
+        <div style="position:relative; height:26px;">
+          <div class="service-icon-badge">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 px-4">
+          <h3 class="font-heading font-bold text-white uppercase tracking-wide text-base mb-2">Drywall Repair</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Patches, holes, and smooth finishes—like it never happened.</p>
+          <a href="#contact" class="text-orange-500 text-xs font-bold uppercase tracking-wider no-underline hover:text-orange-400">
+            Learn More ›
+          </a>
+        </div>
+      </div>
+
+      <!-- Plumbing Fixes -->
+      <div class="service-card text-center pb-6">
+        <div class="service-img img-placeholder-4 flex items-center justify-center">
+          <svg viewBox="0 0 120 90" width="120" height="90" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Under sink pipes -->
+            <rect x="20" y="10" width="80" height="50" rx="3" fill="#2a3a4a"/>
+            <rect x="22" y="12" width="76" height="46" rx="2" fill="#1a2a3a"/>
+            <!-- Faucet -->
+            <rect x="52" y="12" width="16" height="8" rx="2" fill="#888"/>
+            <rect x="58" y="20" width="4" height="10" fill="#888"/>
+            <!-- Water drops -->
+            <ellipse cx="60" cy="35" rx="3" ry="5" fill="#4af" opacity="0.8"/>
+            <!-- Pipe wrench -->
+            <rect x="75" y="40" width="10" height="35" rx="3" fill="#E8600A"/>
+            <path d="M73 38 Q78 32 85 38 L83 42 Q78 38 73 42 Z" fill="#E8600A"/>
+          </svg>
+        </div>
+        <div style="position:relative; height:26px;">
+          <div class="service-icon-badge">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pt-8 px-4">
+          <h3 class="font-heading font-bold text-white uppercase tracking-wide text-base mb-2">Plumbing Fixes</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-4">Fixing leaks, swaps, and small repairs done right.</p>
+          <a href="#contact" class="text-orange-500 text-xs font-bold uppercase tracking-wider no-underline hover:text-orange-400">
+            Learn More ›
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <a href="#contact" class="btn-orange no-underline">
+        View All Services
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     WHY CHOOSE US
+══════════════════════════════════════════════════════════ -->
+<section class="bg-white py-20">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="0,8 10,0 10,6 32,6 32,10 10,10 10,16" fill="#E8600A"/></svg>
+        <h2 class="font-heading font-black text-gray-900 uppercase" style="font-size:2rem; letter-spacing:.12em;">Why Choose <span class="text-orange-500">Us?</span></h2>
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="32,8 22,0 22,6 0,6 0,10 22,10 22,16" fill="#E8600A"/></svg>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+
+      <div>
+        <div class="why-icon mb-4">
+          <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm mb-2">Experienced Pros</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">Skilled, background-checked, and serious about quality.</p>
+      </div>
+
+      <div>
+        <div class="why-icon mb-4">
+          <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm mb-2">On Time, Every Time</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">We show up when we say we will and get it done right.</p>
+      </div>
+
+      <div>
+        <div class="why-icon mb-4">
+          <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v1m0 6v1M9.09 9.09l.707.707M14.19 14.19l.707.707M8 12H7m9 0h-1m-4.9 4.9l.707-.707M14.19 9.81l.707-.707"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm mb-2">Fair &amp; Honest Pricing</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">No hidden fees. Just honest work at a fair price.</p>
+      </div>
+
+      <div>
+        <div class="why-icon mb-4">
+          <svg class="w-8 h-8 text-orange-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h3 class="font-heading font-bold text-gray-900 uppercase tracking-wide text-sm mb-2">Satisfaction Guaranteed</h3>
+        <p class="text-gray-500 text-xs leading-relaxed">If you're not happy, we'll make it right.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     RECENT WORK GALLERY
+══════════════════════════════════════════════════════════ -->
+<section class="bg-dark py-20" id="gallery">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="text-center mb-10">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="0,8 10,0 10,6 32,6 32,10 10,10 10,16" fill="#E8600A"/></svg>
+        <h2 class="font-heading font-black text-white uppercase" style="font-size:2rem; letter-spacing:.12em;">Recent Work</h2>
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="32,8 22,0 22,6 0,6 0,10 22,10 22,16" fill="#E8600A"/></svg>
+      </div>
+    </div>
+
+    <div class="gallery-grid mb-10">
+
+      <!-- Gallery Item 1 - TV Mount -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2a3a,#0a1520);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a2a3a"/>
+            <rect x="20" y="20" width="140" height="90" rx="4" fill="#111" stroke="#333" stroke-width="2"/>
+            <rect x="24" y="24" width="132" height="82" rx="2" fill="#0a1a2a"/>
+            <rect x="80" y="108" width="20" height="12" fill="#222"/>
+            <!-- Wall bracket -->
+            <rect x="84" y="98" width="12" height="14" fill="#444"/>
+            <rect x="78" y="100" width="24" height="4" rx="2" fill="#666"/>
+            <!-- Screen glow -->
+            <rect x="28" y="28" width="124" height="74" rx="1" fill="#0a3050" opacity="0.8"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 2 - Countertop/Kitchen -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#2a1a0a,#3a2010);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#2a1a0a"/>
+            <!-- Counter surface -->
+            <rect x="10" y="70" width="160" height="16" rx="2" fill="#ccc"/>
+            <rect x="10" y="68" width="160" height="6" rx="2" fill="#eee"/>
+            <!-- Faucet -->
+            <rect x="78" y="42" width="8" height="28" fill="#888"/>
+            <path d="M74 42 Q82 30 90 42" stroke="#888" stroke-width="6" fill="none"/>
+            <!-- Sink -->
+            <rect x="40" y="72" width="100" height="40" rx="4" fill="#999"/>
+            <rect x="44" y="76" width="92" height="32" rx="3" fill="#1a2a3a"/>
+            <!-- Drain -->
+            <circle cx="90" cy="92" r="8" fill="#888"/>
+            <circle cx="90" cy="92" r="4" fill="#666"/>
+            <!-- Water drops -->
+            <ellipse cx="82" cy="65" rx="2" ry="4" fill="#6af" opacity="0.7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 3 - Deck/Patio -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2a1a,#0a1a0a);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a2a1a"/>
+            <!-- Deck boards -->
+            <rect x="0" y="60" width="180" height="14" rx="2" fill="#8B6A3E"/>
+            <rect x="0" y="76" width="180" height="14" rx="2" fill="#7a5a2e"/>
+            <rect x="0" y="92" width="180" height="14" rx="2" fill="#8B6A3E"/>
+            <rect x="0" y="108" width="180" height="14" rx="2" fill="#7a5a2e"/>
+            <rect x="0" y="124" width="180" height="16" rx="2" fill="#8B6A3E"/>
+            <!-- Deck rail -->
+            <rect x="0" y="50" width="180" height="12" rx="2" fill="#5a3a1a"/>
+            <rect x="20" y="20" width="6" height="40" fill="#5a3a1a"/>
+            <rect x="50" y="20" width="6" height="40" fill="#5a3a1a"/>
+            <rect x="80" y="20" width="6" height="40" fill="#5a3a1a"/>
+            <rect x="110" y="20" width="6" height="40" fill="#5a3a1a"/>
+            <rect x="140" y="20" width="6" height="40" fill="#5a3a1a"/>
+            <!-- Sky -->
+            <rect x="0" y="0" width="180" height="52" fill="#1a3a5a" opacity="0.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 4 - Drill/Installation -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#2a1a0a,#1a0a00);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a1210"/>
+            <!-- Hands holding drill -->
+            <ellipse cx="90" cy="90" rx="45" ry="30" fill="#c8956c" opacity="0.3"/>
+            <!-- Drill body -->
+            <rect x="40" y="55" width="90" height="32" rx="10" fill="#E8600A"/>
+            <rect x="40" y="63" width="40" height="18" rx="4" fill="#cc4400"/>
+            <!-- Drill handle -->
+            <rect x="60" y="82" width="24" height="34" rx="6" fill="#E8600A"/>
+            <!-- Drill bit -->
+            <rect x="128" y="66" width="40" height="8" rx="2" fill="#888"/>
+            <polygon points="168,66 178,70 168,74" fill="#ccc"/>
+            <!-- Battery indicator -->
+            <rect x="44" y="67" width="32" height="8" rx="2" fill="#333"/>
+            <rect x="46" y="69" width="22" height="4" rx="1" fill="#4a4"/>
+            <!-- Sparks -->
+            <circle cx="170" cy="70" r="3" fill="#ff0" opacity="0.8"/>
+            <circle cx="166" cy="64" r="2" fill="#fa0" opacity="0.6"/>
+            <circle cx="174" cy="66" r="2" fill="#ff0" opacity="0.6"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 5 - Bathroom remodel -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a1a2a,#0a0a1a);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a1a1a"/>
+            <!-- Tile wall -->
+            <rect x="0" y="0" width="90" height="140" fill="#e8e4dc"/>
+            <line x1="0" y1="28" x2="90" y2="28" stroke="#ccc" stroke-width="1"/>
+            <line x1="0" y1="56" x2="90" y2="56" stroke="#ccc" stroke-width="1"/>
+            <line x1="0" y1="84" x2="90" y2="84" stroke="#ccc" stroke-width="1"/>
+            <line x1="0" y1="112" x2="90" y2="112" stroke="#ccc" stroke-width="1"/>
+            <line x1="30" y1="0" x2="30" y2="140" stroke="#ccc" stroke-width="1"/>
+            <line x1="60" y1="0" x2="60" y2="140" stroke="#ccc" stroke-width="1"/>
+            <!-- Mirror -->
+            <rect x="10" y="20" width="70" height="50" rx="2" fill="#a8d4e6" stroke="#888" stroke-width="2"/>
+            <!-- Vanity -->
+            <rect x="0" y="90" width="90" height="50" fill="#8B6A3E"/>
+            <rect x="5" y="94" width="80" height="42" rx="2" fill="#7a5a2e"/>
+            <!-- Dark side -->
+            <rect x="90" y="0" width="90" height="140" fill="#1a1a1a"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 6 - Faucet install -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a2a3a,#0a1a2a);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a2a3a"/>
+            <!-- Granite counter -->
+            <rect x="0" y="80" width="180" height="60" fill="#3a3a3a"/>
+            <rect x="0" y="78" width="180" height="6" fill="#4a4a4a"/>
+            <!-- Sink basin -->
+            <rect x="30" y="82" width="120" height="52" rx="4" fill="#222"/>
+            <rect x="34" y="86" width="112" height="44" rx="3" fill="#1a2a3a"/>
+            <!-- Chrome faucet -->
+            <rect x="82" y="40" width="16" height="42" rx="4" fill="#aaa"/>
+            <path d="M74 42 Q90 22 106 42" stroke="#bbb" stroke-width="8" fill="none" stroke-linecap="round"/>
+            <!-- Faucet handles -->
+            <rect x="64" y="65" width="16" height="8" rx="3" fill="#E8600A"/>
+            <rect x="100" y="65" width="16" height="8" rx="3" fill="#E8600A"/>
+            <!-- Water stream -->
+            <path d="M90 82 Q88 100 90 112" stroke="#6af" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/>
+            <!-- Drain -->
+            <circle cx="90" cy="108" r="8" fill="#333"/>
+            <circle cx="90" cy="108" r="4" fill="#222"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 7 - Tools closeup -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#2a1a0a,#1a1208);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#2a1a0a"/>
+            <!-- Tool belt layout -->
+            <rect x="10" y="50" width="160" height="50" rx="6" fill="#5a3a1a"/>
+            <rect x="14" y="54" width="152" height="42" rx="4" fill="#4a2a10"/>
+            <!-- Pockets with tools -->
+            <rect x="20" y="58" width="28" height="34" rx="3" fill="#3a2010"/>
+            <rect x="24" y="56" width="6" height="30" rx="2" fill="#888"/>
+            <rect x="32" y="56" width="6" height="24" rx="2" fill="#E8600A"/>
+            <rect x="56" y="58" width="28" height="34" rx="3" fill="#3a2010"/>
+            <rect x="60" y="54" width="8" height="32" rx="2" fill="#aaa"/>
+            <rect x="70" y="56" width="8" height="26" rx="2" fill="#E8600A"/>
+            <rect x="92" y="58" width="28" height="34" rx="3" fill="#3a2010"/>
+            <rect x="130" y="58" width="38" height="34" rx="3" fill="#3a2010"/>
+            <rect x="134" y="54" width="10" height="28" rx="2" fill="#ffcc00"/>
+            <!-- Tape measure clipped on -->
+            <rect x="150" y="62" width="30" height="22" rx="6" fill="#E8600A"/>
+            <circle cx="165" cy="73" r="7" fill="#ffcc00" stroke="#E8600A" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Gallery Item 8 - Finished project -->
+      <div class="gallery-item">
+        <div style="width:100%;height:100%;background:linear-gradient(135deg,#1a3a1a,#0a2010);display:flex;align-items:center;justify-content:center;">
+          <svg viewBox="0 0 180 140" width="160" height="120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="180" height="140" fill="#1a2a1a"/>
+            <!-- Finished shelf with items -->
+            <rect x="10" y="60" width="160" height="10" rx="3" fill="#8B6A3E"/>
+            <rect x="10" y="68" width="160" height="4" rx="1" fill="#7a5a2e"/>
+            <!-- Brackets -->
+            <rect x="28" y="60" width="6" height="30" rx="2" fill="#666"/>
+            <rect x="146" y="60" width="6" height="30" rx="2" fill="#666"/>
+            <!-- Items on shelf -->
+            <rect x="22" y="36" width="18" height="24" rx="2" fill="#E8600A"/>
+            <rect x="44" y="40" width="14" height="20" rx="2" fill="#666"/>
+            <rect x="62" y="38" width="12" height="22" rx="2" fill="#888"/>
+            <circle cx="96" cy="50" r="12" fill="#4a6a9a"/>
+            <rect x="112" y="42" width="16" height="18" rx="2" fill="#8B6A3E"/>
+            <!-- Wall -->
+            <rect x="0" y="0" width="180" height="62" fill="#e8e0d0"/>
+            <line x1="0" y1="20" x2="180" y2="20" stroke="#ddd" stroke-width="1"/>
+            <line x1="0" y1="40" x2="180" y2="40" stroke="#ddd" stroke-width="1"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <a href="#contact" class="btn-orange no-underline">
+        View Full Gallery
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════════════════ -->
+<section class="bg-gray-100 py-20" id="reviews">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <div class="text-center mb-12">
+      <div class="flex items-center justify-center gap-3 mb-3">
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="0,8 10,0 10,6 32,6 32,10 10,10 10,16" fill="#E8600A"/></svg>
+        <h2 class="font-heading font-black text-gray-900 uppercase" style="font-size:2rem; letter-spacing:.12em;">What Our <span class="text-orange-500">Clients</span> Say</h2>
+        <svg width="32" height="16" viewBox="0 0 32 16" fill="none"><polygon points="32,8 22,0 22,6 0,6 0,10 22,10 22,16" fill="#E8600A"/></svg>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div class="testimonial-card p-6">
+        <div class="text-orange-500 text-2xl font-black leading-none mb-3">"</div>
+        <div class="stars text-lg mb-2">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4 italic">He mounted my TV perfectly and even hid the wires. Fast, clean, and super professional. I'll never DIY again.</p>
+        <div class="border-t border-gray-200 pt-3">
+          <div class="font-heading font-bold text-gray-900 uppercase text-xs tracking-wide">– Jason M.</div>
+          <div class="text-gray-400 text-xs">Homeowner</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-6">
+        <div class="text-orange-500 text-2xl font-black leading-none mb-3">"</div>
+        <div class="stars text-lg mb-2">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4 italic">I had a punch list a mile long. He knocked it out in one day and the place looks amazing. Highly recommend!</p>
+        <div class="border-t border-gray-200 pt-3">
+          <div class="font-heading font-bold text-gray-900 uppercase text-xs tracking-wide">– Sarah T.</div>
+          <div class="text-gray-400 text-xs">Real Estate Agent</div>
+        </div>
+      </div>
+
+      <div class="testimonial-card p-6">
+        <div class="text-orange-500 text-2xl font-black leading-none mb-3">"</div>
+        <div class="stars text-lg mb-2">★★★★★</div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-4 italic">Finally found someone reliable who actually cares about the details. Top-notch work and a great attitude.</p>
+        <div class="border-t border-gray-200 pt-3">
+          <div class="font-heading font-bold text-gray-900 uppercase text-xs tracking-wide">– Mike R.</div>
+          <div class="text-gray-400 text-xs">Homeowner</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     REALTOR CTA
+══════════════════════════════════════════════════════════ -->
+<section class="realtor-section py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+
+      <!-- Left: Text -->
+      <div class="flex-1">
+        <h2 class="font-heading font-black text-white uppercase leading-tight mb-4" style="font-size: clamp(2rem, 4vw, 3.25rem);">
+          Realtors,<br>
+          <span class="text-orange-500">We've Got Your Back</span>
+        </h2>
+        <p class="text-gray-300 text-sm leading-relaxed mb-6 max-w-md">
+          Pre-listing repairs, punch lists, and quick turnarounds—we help you get properties market-ready, fast.
+        </p>
+        <ul class="list-none m-0 p-0 space-y-2 mb-8">
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            Fast Response
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            Flexible Scheduling
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            Quality Work Shown
+          </li>
+          <li class="flex items-center gap-2 text-gray-300 text-sm">
+            <svg class="w-4 h-4 text-orange-500 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg>
+            Trusted by Top Agents
+          </li>
+        </ul>
+        <a href="#contact" class="btn-orange no-underline">
+          Partner With Us
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: SOLD sign visual -->
+      <div class="flex-shrink-0 flex items-center justify-center relative" style="min-width:260px;">
+        <div style="position:relative; width:260px; height:200px;">
+          <!-- Kitchen background -->
+          <div style="width:260px; height:200px; background:linear-gradient(135deg,#2a1a0a,#3a2010); border-radius:4px; overflow:hidden; position:relative;">
+            <svg viewBox="0 0 260 200" width="260" height="200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Kitchen bg -->
+              <rect width="260" height="200" fill="#2a1a0a"/>
+              <!-- Cabinets -->
+              <rect x="0" y="0" width="260" height="80" fill="#5a3a1a"/>
+              <rect x="5" y="5" width="110" height="70" rx="2" fill="#4a2a10"/>
+              <rect x="120" y="5" width="135" height="70" rx="2" fill="#4a2a10"/>
+              <circle cx="60" cy="40" r="3" fill="#888"/>
+              <circle cx="188" cy="40" r="3" fill="#888"/>
+              <!-- Counter -->
+              <rect x="0" y="130" width="260" height="70" fill="#3a3a3a"/>
+              <rect x="0" y="128" width="260" height="6" fill="#4a4a4a"/>
+              <!-- Backsplash -->
+              <rect x="0" y="80" width="260" height="50" fill="#e8e0d0"/>
+              <line x1="0" y1="100" x2="260" y2="100" stroke="#ccc" stroke-width="1"/>
+              <line x1="0" y1="120" x2="260" y2="120" stroke="#ccc" stroke-width="1"/>
+              <line x1="52" y1="80" x2="52" y2="130" stroke="#ccc" stroke-width="1"/>
+              <line x1="104" y1="80" x2="104" y2="130" stroke="#ccc" stroke-width="1"/>
+              <line x1="156" y1="80" x2="156" y2="130" stroke="#ccc" stroke-width="1"/>
+              <line x1="208" y1="80" x2="208" y2="130" stroke="#ccc" stroke-width="1"/>
+            </svg>
+          </div>
+          <!-- SOLD sign overlay -->
+          <div style="position:absolute; bottom:10px; right:10px; width:120px; background:#E8600A; padding:12px 10px; text-align:center; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+            <div style="font-family:'Oswald',Impact,sans-serif; font-weight:900; font-size:2rem; color:white; letter-spacing:.1em; line-height:1;">SOLD</div>
+            <div style="height:3px; background:white; margin:4px 0;"></div>
+            <div style="font-family:'Oswald',Impact,sans-serif; font-size:0.6rem; color:white; letter-spacing:.12em; font-weight:600;">ANOTHER HAPPY CLIENT</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════════════════════════ -->
+<section class="cta-final py-20 text-center">
+  <div class="max-w-3xl mx-auto px-4">
+    <!-- Decorative stars -->
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="text-orange-500 text-xl">★</span>
+      <span class="text-orange-500 text-lg">★</span>
+      <span class="text-orange-500 text-xl">★</span>
+    </div>
+
+    <h2 class="font-heading font-black text-white uppercase leading-tight mb-2" style="font-size: clamp(2rem, 5vw, 3.5rem);">
+      Ready To Get It Done?
+    </h2>
+    <p class="font-heading font-semibold text-orange-500 uppercase tracking-widest text-sm mb-8">
+      Let's Tackle Your To-Do List.
+    </p>
+
+    <a href="#contact" class="btn-orange no-underline text-base">
+      Get A Free Quote
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+
+    <div class="flex items-center justify-center gap-2 mt-6">
+      <span class="text-orange-500 text-lg">★</span>
+      <span class="text-orange-500 text-xl">★</span>
+      <span class="text-orange-500 text-lg">★</span>
+    </div>
+  </div>
+</section>
